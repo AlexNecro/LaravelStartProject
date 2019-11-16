@@ -94,6 +94,6 @@ class TestController extends BaseController
             echo ('В параметры передан какой-то отстой, но, слава аллаху, мы это обработали!');
             return;
         }
-        return ($this->testOne->getAll());
+        return response()->json ($this->testOne->getAll());
     }
 }
