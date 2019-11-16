@@ -63,9 +63,9 @@ class TestOne {
 
     function __construct($prop1, $prop2, $prop3)
     {
-        $this->prop1 = $prop1;
-        $this->prop2 = $prop2;
-        $this->prop3 = $prop3;
+        $this->prop1 = (string)$prop1;
+        $this->prop2 = (bool)$prop2;
+        $this->prop3 = (int)$prop3;
     }
 
     function getAll() {
@@ -77,8 +77,23 @@ class TestController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    protected $testOne;
+
     public function getOne(Request $request) {
-        $testOne = new TestOne('Uno', true, 666);
-        dd($testOne->getAll());
+        $this->testOne = new TestOne('Uno', true, 666);
+        dd($this->testOne->getAll());
+    }
+
+    public function setOne(Request $request) {
+        try
+        {
+            $this->testOne = new TestOne($request->prop1, $request->prop2, $request->prop3);
+        }
+        catch (Exception $e)
+        {
+            echo ('В параметры передан какой-то отстой, но, слава аллаху, мы это обработали!');
+            return;
+        }
+        return ($this->testOne->getAll());
     }
 }
