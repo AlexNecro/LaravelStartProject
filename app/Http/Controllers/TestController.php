@@ -15,7 +15,7 @@ class TestController extends BaseController
 
     protected $service;
 
-    public function __construct(TestBasicService $testService)
+    public function __construct(TestBasicService $testService) //так уже и было
     {
         $this->service = $testService;
     }
