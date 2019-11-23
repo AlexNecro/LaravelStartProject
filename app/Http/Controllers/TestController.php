@@ -8,6 +8,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request as Request;
 use App\Services\TestBasicService as TestBasicService;
+use App\Facades;
 
 class TestController extends BaseController
 {
@@ -15,24 +16,23 @@ class TestController extends BaseController
 
     protected $service;
 
-    public function __construct(TestBasicService $testService) //так уже и было
+    public function __construct()
     {
-        $this->service = $testService;
     }
 
     public function getOne(Request $request) {
-        return response($this->service->getOne());
+        return Facades\TestBasicServiceFacade::getOne();
     }
 
     public function setOne(Request $request) {
         try
         {
-            $this->service->setOne($request->prop1, $request->prop2, $request->prop3);
+            Facades\TestBasicServiceFacade::setOne($request->prop1, $request->prop2, $request->prop3);
         }
         catch (Exception $e)
         {
             return response('В параметры передан какой-то отстой, но, слава аллаху, мы это обработали!');
         }
-        return response()->json ($this->service->getOne());
+        return Facades\TestBasicServiceFacade::getOne();
     }
 }
