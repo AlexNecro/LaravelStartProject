@@ -11,7 +11,7 @@ class ApiKeyMiddleware
         if ($request->header('x-api-key') == env('API_KEY')) {
             return $next($request);
         } else {
-            return response('Не угадал', 401);
+            return response('Не угадал: ' . $request->header('x-api-key') . ' !== ' . env('API_KEY'), 401);
         }
     }
 
