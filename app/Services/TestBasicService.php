@@ -72,9 +72,10 @@ class TestOne {
 class TestBasicService {
 
     protected $testOne;
-    public function __construct()
+    public function __construct(TestOne $testOne)
     {
-        $this->testOne = new TestOne('none', false, 0);
+        $this->testOne = $testOne;
+        //$this->testOne = new TestOne('none', false, 0);
     }
 
     public function getOne() {
