@@ -26,4 +26,12 @@ class Test extends Model
         }
     }
 
+    public static function getByText(string $text) {
+        try {
+            return Test::where('text', $text)->get();
+        } catch (Exception $e) {
+            return null;
+        }
+    }
+
 }
