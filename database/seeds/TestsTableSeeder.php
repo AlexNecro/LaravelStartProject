@@ -13,7 +13,8 @@ class TestsTableSeeder extends Seeder
      */
     public function run()
     {
-
+        for($i = 0; $i < 10; $i++)
+            $this->add();
     }
 
     protected function add() {
