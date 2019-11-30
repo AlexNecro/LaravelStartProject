@@ -21,3 +21,5 @@ Route::middleware('apikey')->group(function() {
     Route::get('/test/one', "TestController@getOne");
     Route::post('/test/one', "TestController@setOne");
 });
+
+Route::get('/test/gettest', "TestController@getTest");

@@ -20,6 +20,10 @@ class TestController extends BaseController
     {
     }
 
+    public function getTest(Request $request) {
+        return App\Models\Test::getById($request->id);
+    }
+
     public function getOne(Request $request) {
         return Facades\TestBasicServiceFacade::getOne();
     }
