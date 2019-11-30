@@ -20,8 +20,12 @@ class TestController extends BaseController
     {
     }
 
-    public function getTest(Request $request) {
+    public function byId(Request $request) {
         return App\Models\Test::getById($request->id);
+    }
+
+    public function byText(Request $request) {
+        return App\Models\Test::getByText($request->text);
     }
 
     public function getOne(Request $request) {
