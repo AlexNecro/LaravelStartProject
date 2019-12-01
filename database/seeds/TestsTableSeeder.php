@@ -13,8 +13,7 @@ class TestsTableSeeder extends Seeder
      */
     public function run()
     {
-        for($i = 0; $i < 10; $i++)
-            $this->add();
+        factory(App\Models\Test::class, 10)->create();
     }
 
     protected function add() {
