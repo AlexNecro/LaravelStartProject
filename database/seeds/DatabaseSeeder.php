@@ -12,6 +12,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
-        $this->call(TestsTableSeeder::class);
+        $this->call(TestsTableSeeder::class); //это говно так и не заработало
+        //и \laragon\bin\composer dump-autoload не помог
+        //помог только php artisan db:seed --class=TestsTableSeeder но тольько после предыдущего
     }
 }

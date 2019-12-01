@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Test;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -21,11 +22,11 @@ class TestController extends BaseController
     }
 
     public function byId(Request $request) {
-        return App\Models\Test::getById($request->id);
+        return Test::getById($request->id); //http://laravelstartproject.test/api/test/id?id=1 OK
     }
 
     public function byText(Request $request) {
-        return App\Models\Test::getByText($request->text);
+        return Test::getByText($request->text); //http://laravelstartproject.test/api/test/text?text=JccPLYvxel OK
     }
 
     public function getOne(Request $request) {
