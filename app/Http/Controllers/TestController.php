@@ -21,6 +21,10 @@ class TestController extends BaseController
     {
     }
 
+    public function test() {
+        return response("my first test", 200);
+    }
+
     public function byId(Request $request) {
         return Test::getById($request->id); //http://laravelstartproject.test/api/test/id?id=1 OK
     }
