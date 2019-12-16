@@ -4,6 +4,8 @@
 namespace App\Services;
 
 
+use App\Exceptions\MyTestException;
+
 class TestOne {
     protected $prop1;
     protected $prop2;
@@ -86,6 +88,14 @@ class TestBasicService {
         $this->testOne->setProp1($prop1);
         $this->testOne->setProp2($prop2);
         $this->testOne->setProp3($prop3);
+    }
+
+    public function getException($id) {
+        $data = Test::getById($id);
+
+        if (is_null($data)) {
+            throw new MyTestException();
+        }
     }
 
 }
