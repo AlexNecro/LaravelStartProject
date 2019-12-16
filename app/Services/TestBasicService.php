@@ -98,4 +98,8 @@ class TestBasicService {
         }
     }
 
+    public function getForMock(string $var) {
+        return $var;
+    }
+
 }
