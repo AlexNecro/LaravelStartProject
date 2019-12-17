@@ -34,11 +34,10 @@ class MyHTTPTest extends TestCase
 
         $this->mock(TestBasicService::class, function ($mock) {
             $mock->shouldReceive('getForMock')->once()->andReturn('my third test');
-        });
 
-        $service = new TestBasicService();
-        $result = $service->getForMock('test');
-        $this->assertEquals($result, 'test');
+            $result = $mock->getForMock('test');
+            $this->assertEquals($result, 'test');
+        });
 
     }
 }
