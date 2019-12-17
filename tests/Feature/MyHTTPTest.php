@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Facades\TestBasicServiceFacade;
 use App\Services\TestBasicService;
 use App\Services\TestOne;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -38,6 +39,15 @@ class MyHTTPTest extends TestCase
             $result = $mock->getForMock('test');
             $this->assertEquals($result, 'test');
         });
+
+    }
+
+    public function testGetForMockFacade() {
+
+            TestBasicServiceFacade::shouldReceive('getForMock')->once()->andReturn('my third test');
+
+            $result = TestBasicServiceFacade::getForMock('test');
+            $this->assertEquals($result, 'test');
 
     }
 }
